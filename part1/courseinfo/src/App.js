@@ -32,6 +32,7 @@ const Total = (props) => {
 
 const App = () => {
   const course = {
+    // Changing the course and its part into a single JS object
     name: 'Half Stack application development',
     parts: [
       {
