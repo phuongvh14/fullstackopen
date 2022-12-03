@@ -1,49 +1,24 @@
 {
-  "persons": [
-    {
-      "name": "Arto Hellas",
+  "persons":[
+    { 
+      "name": "Arto Hellas", 
       "number": "040-123456",
       "id": 1
     },
-    {
-      "name": "Ada Lovelace",
+    { 
+      "name": "Ada Lovelace", 
       "number": "39-44-5323523",
       "id": 2
     },
-    {
-      "name": "Dan Abramov",
+    { 
+      "name": "Dan Abramov", 
       "number": "12-43-234345",
       "id": 3
     },
-    {
-      "name": "Mary Poppendieck",
+    { 
+      "name": "Mary Poppendieck", 
       "number": "39-23-6423122",
       "id": 4
-    },
-    {
-      "name": "Phuong Beo",
-      "number": "84-977-288-258",
-      "id": 5
-    },
-    {
-      "name": "Quenh Beo",
-      "number": "84-362-535-958",
-      "id": 6
-    },
-    {
-      "name": "Ba Ngoai",
-      "number": "84-366-252-007",
-      "id": 7
-    },
-    {
-      "name": "Xuan Quynh",
-      "number": "9329959730",
-      "id": 8
-    },
-    {
-      "name": "Luu Quang Vu",
-      "number": "3097952993",
-      "id": 9
     }
   ]
 }
