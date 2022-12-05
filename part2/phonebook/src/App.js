@@ -4,6 +4,7 @@ import PersonFrom from './Components/PersonForm'
 import Persons from './Components/Persons'
 import Notification from './Components/Notification'
 import personService from './services/persons'
+import './index.css';
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -39,7 +40,7 @@ const App = () => {
           setNoti(`Updated contact information for ${newName}`)
           setTimeout(() => {
             setNoti(null)
-          }, 5000)
+          }, 3500)
         }
       }
       else {
@@ -50,7 +51,7 @@ const App = () => {
         setNoti(`Added ${newName}`)
         setTimeout(() => {
           setNoti(null)
-        }, 5000)
+        }, 3500)
       }
       setNewName('')  
       setNewNum('')
@@ -60,6 +61,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      {noti !== null ? <Notification message={noti}/>:null}
       <Filter filter={filter} onFilterChange={handleFilterChange} />
       <h2>add a new</h2>
       <PersonFrom 
