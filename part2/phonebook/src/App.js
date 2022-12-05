@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Filter from './Components/Filter'
 import PersonFrom from './Components/PersonForm'
 import Persons from './Components/Persons'
+import Notification from './Components/Notification'
 import personService from './services/persons'
 
 const App = () => {
@@ -9,7 +10,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNum, setNewNum] = useState('')
   const [filter, setFilter] = useState('')
-
+  const [noti, setNoti] = useState(null)
   useEffect(() => {
     personService
       .getAll()
@@ -35,12 +36,21 @@ const App = () => {
           personService.updatePerson(findDup.id, personObject).then(() => {
             personService.getAll().then(data => setPersons(data))
           })
+          setNoti(`Updated contact information for ${newName}`)
+          setTimeout(() => {
+            setNoti(null)
+          }, 5000)
         }
       }
       else {
         personService
           .create(personObject)
-          .then(returnedList => setPersons(persons.concat(returnedList)))       
+          .then(returnedList => setPersons(persons.concat(returnedList)))   
+        
+        setNoti(`Added ${newName}`)
+        setTimeout(() => {
+          setNoti(null)
+        }, 5000)
       }
       setNewName('')  
       setNewNum('')
