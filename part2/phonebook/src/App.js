@@ -22,16 +22,22 @@ const App = () => {
   
   const addInfo = (event) => {
       event.preventDefault()
+      const personObject = {
+        name: newName,
+        number: newNum
+      }
+
       const findDup = persons.find(person => person.name.toLowerCase() === newName.toLowerCase())
+
       if (typeof findDup !== 'undefined') {
-        window.alert(`${newName} is already added to the phonebook`)
+        const userResponse = window.confirm(`${newName} is already added to the phonebook, replace the old number with a new one?`)
+        if (userResponse) {
+          personService.updatePerson(findDup.id, personObject).then(() => {
+            personService.getAll().then(data => setPersons(data))
+          })
+        }
       }
       else {
-        const personObject = {
-          name: newName,
-          number: newNum
-        }
-
         personService
           .create(personObject)
           .then(returnedList => setPersons(persons.concat(returnedList)))       
