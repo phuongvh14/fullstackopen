@@ -36,19 +36,21 @@ const App = () => {
         if (userResponse) {
           personService.updatePerson(findDup.id, personObject).then(() => {
             personService.getAll().then(data => setPersons(data))
-          })
-          setNoti(`Updated contact information for ${newName}`)
-          setTimeout(() => {
-            setNoti(null)
-          }, 3500)
+            setNoti({'text':`Updated contact information for ${newName}`, 'type':'regular'})
+            setTimeout(() => {setNoti(null)}, 3500)
+          }).catch(error => {
+            console.log(error)
+            setNoti({'text': `Information of ${newName} has already been deleted from server`, 'type': 'error'})
+            setTimeout(() => {setNoti(null)}, 3500)
+          }) 
         }
       }
       else {
         personService
           .create(personObject)
           .then(returnedList => setPersons(persons.concat(returnedList)))   
-        
-        setNoti(`Added ${newName}`)
+
+        setNoti({'text':`Added ${newName}`, 'type':'regular'})
         setTimeout(() => {
           setNoti(null)
         }, 3500)
